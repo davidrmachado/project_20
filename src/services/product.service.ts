@@ -5,4 +5,6 @@ import IProduct from '../interfaces';
 const createProduct = (product: IProduct):
 Promise<IProduct> => productModel.createProduct(product);
 
-export default { createProduct };
+const listProducts = async () => productModel.listProducts();
+
+export default { createProduct, listProducts };

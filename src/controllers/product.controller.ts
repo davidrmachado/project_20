@@ -1,13 +1,19 @@
 import { Request, Response } from 'express';
 
-import productsService from '../services';
+import productService from '../services';
 
 const createProduct = async (req: Request, res: Response) => {
   const product = req.body;
 
-  const newProduct = await productsService.createProduct(product);
+  const newProduct = await productService.createProduct(product);
 
   res.status(201).json(newProduct);
 };
 
-export default { createProduct };
+const listProducts = async (_req: Request, res: Response) => {
+  const allProducts = await productService.listProducts();
+
+  res.status(200).json(allProducts);
+};
+
+export default { createProduct, listProducts };
